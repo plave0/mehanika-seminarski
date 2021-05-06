@@ -12,7 +12,7 @@ data = np.loadtxt("baseballforce.d")
 T = data[:,0]
 F = data[:,1]
 
-# Masa loptice u gramima (zadata u zadatku)
+# Masa loptice u kilogramima (zadata u zadatku)
 m = 0.145
 
 # Vremenski korak je konstantan u nizu T, pa
