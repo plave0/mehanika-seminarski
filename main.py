@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 # Učitavamo podatke iz fajla baseballforce.d
 # U prvoj koloni se nalazi proteklo vreme od početka udarca
@@ -20,7 +21,7 @@ m = 0.145
 dt = T[1] - T[0]
 
 # Ugao pod kojim se udara loptica u radijanima (nije zadata u zadaku)
-alfa = np.deg2rad(0)
+alfa = np.deg2rad(30)
 
 # Inicijalizujemo nizove gde čuvamo ubrzanje, brzinu i položaj.
 # Za početak iz inicijalizujemo kao prazne nizove dužine 100
@@ -46,7 +47,7 @@ v = np.array([0,0])
 # Početno ubrzanje
 a = np.array([0, 0])
 
-#
+# Vreme proteklo od početka simulacije
 t = 0
 
 # Brojači za prolazak kroz nizove
@@ -67,13 +68,13 @@ while r[1] >= 0:
         a = F[brojac]/m
 
         # Računamo vektorz ubrzanja i čuvamo ga
-        a = np.array([a * np.cos(alfa), a * np.sin(alfa) - 9.81])
-        A[ia] = a
+        a_vektor = np.array([a * np.cos(alfa), a * np.sin(alfa) - 9.81])
+        A[ia] = a_vektor
 
     # U suprotnom, ubrzanje je konstantno
     else:
         a = np.array([0, -9.81])
-        # A[ia] = a
+        # A[ia] = a_vektor
 
     # Uvećavamo brojač i proveravamo da li smo sitgli do kraja niza
     # Ako jesmo, širimo niz
@@ -83,6 +84,11 @@ while r[1] >= 0:
     r = r + v * dt
     V[iv] = v
     R[ir] = r
+
+    if brojac == len(F):
+        print("U trenutku kada palica prestane da deluje na lopticu:")
+        print("\tVektor brzine = " + str(v))
+        print("\tIntenzitet brzine = " + str(np.sqrt(v[0]**2 + v[1]**2)) + " m/s")
 
     # Čuvamo trenutno proteklo vreme i ažuriramo proteklo vreme
     DT[idt] = t
