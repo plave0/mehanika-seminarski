@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 
 # Učitavamo podatke iz fajla baseballforce.d
 # U prvoj koloni se nalazi proteklo vreme od početka udarca
