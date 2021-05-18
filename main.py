@@ -67,13 +67,13 @@ while r[1] >= 0:
         a = F[brojac]/m
 
         # Računamo vektorz ubrzanja i čuvamo ga
-        a_vektor = np.array([a * np.cos(alfa), a * np.sin(alfa) - 9.81])
-        A[ia] = a_vektor
+        a = np.array([a * np.cos(alfa), a * np.sin(alfa) - 9.81])
+        A[ia] = a
 
     # U suprotnom, ubrzanje je konstantno
     else:
         a = np.array([0, -9.81])
-        # A[ia] = a_vektor
+        # A[ia] = a
 
     # Uvećavamo brojač i proveravamo da li smo sitgli do kraja niza
     # Ako jesmo, širimo niz
